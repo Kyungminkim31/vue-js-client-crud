@@ -45,7 +45,7 @@
         수정
       </button>
       <button class="btn btn-primary mr-2"
-        v-confirm="{ok:deleteProduct, cancel: doNothing, message: '삭제하시겠습니까?'}">
+        @click="deleteProduct">
         삭제
       </button>
     </div>
@@ -79,30 +79,13 @@ export default {
           console.log(e);
         });
     },
-    updateUseChecked(status) {
-      var data = {
-        id: this.currentProduct.id,
-        name: this.currentProduct.name,
-        description: this.currentProduct.description,
-        use_checked: status
-      };
-      this.message ='';
-      ProductDataService.update(this.currentProduct.id, data)
-      .then(response=>{
-        this.currentProduct.use_checked = status;
-        console.log(response.data);
-      })
-      .catch(e=>{
-        console.log(e);
-      });
-    },
     updateProduct() {
       ProductDataService.update( this.currentProduct.id, this.currentProduct)
       .then(response => {
         console.log(response.data);
         this.message = '상품 정보가 수정이 되었습니다.';
       })
-      .catch( e=> {
+      .catch( e => {
         console.log(e);
       });
     },
@@ -115,9 +98,6 @@ export default {
       .catch( e => {
         console.log(e);
       });
-    },
-    doNothing(){
-      console.log("Do nothing!");
     }
   },
   mounted() {

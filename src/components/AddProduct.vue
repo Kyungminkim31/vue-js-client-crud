@@ -29,10 +29,10 @@
       <button @click="saveProduct" class="btn btn-success">등록</button>
     </div>
 
-    <div v-else>
-      <h4> 성공적으로 등록 하였습니다. </h4>
-      <button class="btn btn-success" @click="newProduct">추가로 등록하기</button>
-      <button @click="goBack" class="btn btn-success">목록으로 돌아가기</button>
+    <div v-else class="mx-auto">
+      <p> 성공적으로 등록 하였습니다. </p>
+      <button class="btn btn-primary mr-3" @click="newProduct">추가등록</button>
+      <button @click="goBack" class="btn btn-primary">돌아가기</button>
     </div>
   </div>
 </template>

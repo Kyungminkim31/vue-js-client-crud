@@ -9,14 +9,9 @@ import 'vx-easyui/dist/themes/vue.css';
 
 import EasyUI from 'vx-easyui';
 
-import VueJsDialog from "vuejs-dialog";
-
-import 'vuejs-dialog/dist/vuejs-dialog.min.css';
-
 Vue.config.productionTip = false
 
 Vue.use(EasyUI);
-Vue.use(VueJsDialog);
 
 new Vue({
   router,
