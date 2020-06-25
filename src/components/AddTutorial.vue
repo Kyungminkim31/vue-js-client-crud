@@ -50,7 +50,12 @@ export default {
         description: "",
         published: false
       },
-      submitted: false
+      submitted: false,
+      message: '',
+      show: true,
+      successClass: 'alert alert-success',
+      errorClass: 'alert alert-danger',
+      isSuccess: true,
     };
   },
   methods: {
@@ -65,9 +70,17 @@ export default {
           this.tutorial.id = response.data.id;
           console.log(response.data);
           this.submitted = true;
+          this.isSuccess = true;
+          this.message = response.data.message;
+          this.show = true
+          setTimeout(()=>{this.show = false}, 2000);
         })
         .catch( e => {
           console.log(e);
+          this.isSuccess = false;
+          this.message = e;
+          this.show = true
+          setTimeout(()=>{this.show = false}, 2000);
         });
     },
     newTutorial(){
