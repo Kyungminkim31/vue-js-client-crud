@@ -41,7 +41,7 @@
     </div>
     <div class="col-md-6">
       <div v-if="currentProduct">
-        <div class="m-3">  
+        <div>  
           <h5>상세 상품 정보</h5>
           <div>
             <label><strong>이름:</strong></label> 
@@ -56,7 +56,7 @@
             {{ currentProduct.use_checked ? "사용" : "미사용" }}
           </div>
           <div>
-            <a class="btn btn-link"
+            <a class="btn btn-light"
               :href="'/product/' + currentProduct.id">
               편집
             </a>
@@ -64,8 +64,8 @@
         </div>
       </div> <!-- div for v-if -->
       <div v-else>
-        <div class="border align-middle mx-auto">
-          <p> 상품을 선택하세요.</p>
+        <div>
+          <p class="mx-auto align-middle"> 상품을 선택하세요.</p>
         </div>
       </div>
     </div>
@@ -83,7 +83,7 @@ export default {
       currentProduct : null,
       currentIndex: -1,
       name: ""
-    };  
+    };
   },
   methods: {
     retrieveProducts() {
@@ -96,13 +96,11 @@ export default {
           console.log(e);
         });
     },
-
     refreshList() {
       this.retrieveProducts();
       this.currentProduct = null;
       this.currentIndex = -1;
     },
-
     setActiveProduct(product, index){
       this.currentProduct = product;
       this.currentIndex = index;
