@@ -1,25 +1,19 @@
 <template>
-  <div id="app">
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-      <a href="#" class="navbar-brand">비전 커넥트</a>
-      <div class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a href="/tutorials" class="nav-link">강좌</a>
-        </li>
-        <li class="nav-item">
-          <a href="/products" class="nav-link">상품</a>
-        </li>
-      </div>
-    </nav>
-
-    <div class="container mt-3">
-      <router-view />
-    </div>
-  </div>
+  <v-app>
+    <Navbar/>
+    <v-main class="mx-4 mb-4">
+      <router-view></router-view>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
+
 export default {
-  name: 'App'
-}
+  name: 'App',
+
+  data: () => ({
+    //
+  }),
+};
 </script>

@@ -8,7 +8,11 @@ export default new Router({
   routes: [
     {
       path: "/",
-      alias: "/tutorials",
+      name: 'home',
+      component: () => import("./views/Home.vue")
+    },
+    {
+      path: "/tutorials",
       name: "tutorials",
       component: () => import("./components/TutorialsList")
     },
