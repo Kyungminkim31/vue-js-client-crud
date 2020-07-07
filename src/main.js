@@ -3,24 +3,24 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 
+import store from './store';
+import VeeValidate from 'vee-validate';
+
 import Vuetify from "vuetify"
 import "vuetify/dist/vuetify.min.css";
 
-import 'vx-easyui/dist/themes/default/easyui.css';
-import 'vx-easyui/dist/themes/icon.css';
-import 'vx-easyui/dist/themes/vue.css';
-
-import EasyUI from 'vx-easyui';
 import vuetify from './plugins/vuetify';
 
 Vue.config.productionTip = false
 
-Vue.use(EasyUI);
+Vue.use(VeeValidate);
+
 Vue.use(Vuetify);
 
 new Vue({
   router,
   vuetify,
+  store,
   render: h => h(App)
 }).$mount('#app')
 
