@@ -1,9 +1,10 @@
 <template>
-  <v-col>
-    <v-card>
-      <v-card-title align="center">
-        <h3>로그인</h3>
-      </v-card-title>
+<v-row>
+  <v-col align="center" mb="12" class="mt-16">
+    <v-card max-width="480px">
+      <v-card-text class="grey--text--darken3">
+        <h4>Log In To VisionConnect</h4>
+      </v-card-text>
       <v-card-text>
         <v-form class="px-3" ref="form">
           <v-text-field
@@ -20,10 +21,11 @@
         </v-form>
         <v-btn class="success" @click="handleLogin" :loading="loading">
           로그인 하기
-          </v-btn>
+        </v-btn>
       </v-card-text>
     </v-card>
   </v-col>
+</v-row>
 </template>
 
 <script>

@@ -128,9 +128,18 @@ export default {
     addProduct(){
       this.$router.push("/product/add");
     } 
+  },
+  computed: {
+    currentUser(){
+      return this.$store.state.auth.user;
+    }
   },   
   mounted() {
-    this.retrieveProducts();
+    if(!this.currentUser){
+      this.$router.push('login');
+    } else {
+      this.retrieveProducts();
+    }
   }
 };
 </script>

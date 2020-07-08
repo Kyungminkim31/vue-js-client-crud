@@ -32,9 +32,7 @@ export default {
   name: 'Profile',
   computed: {
     currentUser() {
-      console.log(this.$store.state.auth);
       return this.$store.state.auth.user;
-      // return { username:'John Doe', email:'j.doe@visionconnect.co.kr', password:'1234qwer'};
     }
   },
   mounted() {
