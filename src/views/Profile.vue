@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard">
     <v-subheader class="grey-text">
-      <strong>{{currentUser.name}}</strong>
+      <strong>{{currentUser.username}}</strong>
       <span class="ml-2">프로필</span>
     </v-subheader>
 
