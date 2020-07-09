@@ -1,21 +1,21 @@
 <template>
   <nav>
-    <v-app-bar flat app>
+    <v-app-bar app color="white" elevation="1">
       <v-app-bar-nav-icon class="grey--text" @click="drawer = !drawer">
       </v-app-bar-nav-icon>
-      <v-toolbar-title class="text-uppercase grey--text">
-        <span class="font-weight-light">Vision</span>
-        <span>Connect</span>
+      <v-toolbar-title class="text-uppercase">
+        <v-img :src="require('@/assets/logo-vc-365x206.png')" width="28px" class="d-inline-block mr-2"/>
+        <span class="light-blue--text text--lighten-2">Vision</span>
+        <span class="light-blue--text text--darken-4">Connect</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-
 
       <div v-if="signedIn">
         <v-menu offset-y>
           <template v-slot:activator="{on, attrs}">
             <v-btn text slot="activator" color="grey" v-bind="attrs" v-on="on">
               <v-icon left>mdi-expand-all</v-icon>
-              <span>menu</span>
+              <span>메뉴</span>
             </v-btn>
           </template>
           <v-list>
@@ -25,17 +25,17 @@
             </v-list-item>
           </v-list>
         </v-menu>
-        <v-btn text color="grey" @click="signOut">
-          <span>Sign Out</span>
+        <v-btn text class="grey--text text--darken-2" @click="signOut">
+          <span>로그아웃</span>
           <v-icon right>mdi-exit-to-app</v-icon>
         </v-btn> 
       </div>
       <div v-else>
-        <v-btn text color="grey" @click="signUp">
-          <span>Sign Up</span>
+        <v-btn text class="grey--text text--darken-2" @click="signUp">
+          <span>사용자등록</span>
         </v-btn>
-        <v-btn text color="grey" @click="signIn">
-          <span>Sign In</span>
+        <v-btn text class="grey--text text--darken-2" @click="signIn">
+          <span>로그인</span>
           <v-icon right>mdi-login</v-icon>
         </v-btn>
       </div>
@@ -78,6 +78,10 @@
 <script>
 
 export default {
+  name: 'Navbar',
+  props: {
+    isLoggedIn: Boolean
+  },
   data() {
     return {
       drawer: false,
@@ -92,6 +96,9 @@ export default {
   computed: {
     currentUser() {
       return this.$store.state.auth.user;
+    },
+    userLoggedIn(){
+      return this.$store.state.auth.status.loggedIn;
     }
   },
   mounted() {
@@ -103,9 +110,9 @@ export default {
   },
   methods: {
     signOut(){
-      this.$store.dispatch('auth/logout');
-      this.$router.push('/login');
       this.signedIn = false;
+      this.$store.dispatch('auth/logout');
+      this.$router.push("/").catch(()=>{});
     }, 
     signUp(){
       this.$router.push('/register');
