@@ -9,8 +9,7 @@
         <span class="light-blue--text text--darken-4">Connect</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-
-      <div v-if="signedIn">
+      <div v-if="currentUser">
         <v-menu offset-y>
           <template v-slot:activator="{on, attrs}">
             <v-btn text slot="activator" color="grey" v-bind="attrs" v-on="on">
@@ -42,7 +41,7 @@
     </v-app-bar>
 
     <v-navigation-drawer app v-model="drawer" class="grey pa-3">
-      <v-col v-if="signedIn" align="center" class="mt-5" >
+      <v-col v-if="currentUser" align="center" class="mt-5" >
         <v-avatar size="100" class="grey lighten-1">
           <img src="/avatar-5.png">
         </v-avatar>
@@ -50,7 +49,7 @@
           김경민 <!-- 사용자 이름 -->
         </p>
       </v-col>
-      <v-list v-if="signedIn" nav >
+      <v-list v-if="currentUser" nav >
         <v-list-item-group v-model="links" color="primary">
           <v-list-item
             v-for="(link, i) in links"
@@ -67,9 +66,9 @@
             </v-list-item-content>
           </v-list-item>
         </v-list-item-group>
-      </v-list>
+      </v-list>  
       <v-col v-else>
-        <p class="white--text" align="center"> 로그인 후 이용하실 수 있습니다. </p>
+        <p class="white--text" align="center"> 로그인 후 이용하실 수 있습니다. </p> 
       </v-col>
     </v-navigation-drawer>
   </nav>
@@ -79,13 +78,9 @@
 
 export default {
   name: 'Navbar',
-  props: {
-    isLoggedIn: Boolean
-  },
   data() {
     return {
       drawer: false,
-      signedIn: false,
       links: [
         { icon: 'mdi-view-dashboard', text:'Dashboard', route:'/'},
         { icon: 'mdi-folder', text: 'My Projects', route: '/projects'},
@@ -97,25 +92,14 @@ export default {
     currentUser() {
       return this.$store.state.auth.user;
     },
-    userLoggedIn(){
-      return this.$store.state.auth.status.loggedIn;
-    }
-  },
-  mounted() {
-    if (!this.currentUser) {
-      this.signedIn = false;
-    } else {
-      this.signedIn = true;
-    }
   },
   methods: {
     signOut(){
-      this.signedIn = false;
       this.$store.dispatch('auth/logout');
       this.$router.push("/").catch(()=>{});
     }, 
     signUp(){
-      this.$router.push('/register');
+      this.$router.push("/register").catch(()=>{});
     },
     signIn(){
       this.$router.push("/login").catch(()=>{});
