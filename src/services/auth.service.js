@@ -26,7 +26,15 @@ class AuthService {
     return axios.post(API_URL+'register', {
       name: user.name,
       email: user.email,
+      role: user.role,
       password: user.password
+    }).then( response => {
+      if(response.data.token){
+        console.log(response.data);
+        localStorage.setItem('user', JSON.stringify(response.data));
+      }
+
+      return response.data;
     });
   }
 }

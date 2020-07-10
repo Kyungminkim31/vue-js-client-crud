@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard">
     <v-subheader class="grey-text">
-      <strong>{{currentUser.username}}</strong>
+      <strong>{{currentUser.name}}</strong>
       <span class="ml-2">프로필</span>
     </v-subheader>
 
@@ -12,7 +12,7 @@
           md="4">
           <v-card color="light" class="ma-4 pa-4">
             <v-card-text>
-              {{currentUser.username}}
+              {{currentUser.name}}
             </v-card-text>
             <v-card-text>
               {{currentUser.email}} 
